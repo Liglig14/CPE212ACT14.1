@@ -1,0 +1,27 @@
+---
+- name: Install Nova packages
+  apt:
+    name:
+      - nova-api
+      - nova-scheduler
+      - nova-conductor
+    state: present
+
+# Enable and start Nova services
+- name: Enable and start Nova API service
+  systemd:
+    name: nova-api
+    state: started
+    enabled: yes
+
+- name: Enable and start Nova Scheduler service
+  systemd:
+    name: nova-scheduler
+    state: started
+    enabled: yes
+
+- name: Enable and start Nova Conductor service
+  systemd:
+    name: nova-conductor
+    state: started
+    enabled: yes
